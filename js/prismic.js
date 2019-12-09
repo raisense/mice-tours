@@ -29,9 +29,9 @@ function trimText(txt) {
   // return txt.trunc(120, true);
 }
 
-const prismic = PrismicJS.api("https://mice-tours.prismic.io/api/v2", {
+const prismic = PrismicJS.api("https://mice-tours.cdn.prismic.io/api/v2", {
   accessToken:
-    "MC5YZXNrYUJFQUFCcGVXMkVr.77-977-977-977-9OSzvv73vv73vv73vv73vv70I77-9du-_vRbvv71HTR1eGkzvv73vv70fGO-_vXha77-9bw"
+    "MC5YZTR2TlJFQUFMT0FhTkRQ.77-9Cijvv73vv71j77-9Y--_ve-_ve-_ve-_vS7vv73vv73vv73vv71FTe-_ve-_ve-_ve-_vVdV77-977-977-977-9Ge-_vX8"
 });
 
 prismic.then((api) => {
@@ -106,6 +106,7 @@ function getCategoryProjects(category) {
     }
 
     api.query([projects, byCategory]).then((response) => {
+      console.log(response);
       loading = true;
 
       if (response.results.length == 0) {
@@ -121,13 +122,20 @@ function getCategoryProjects(category) {
                               <img src="${project.data.image.url}" alt="" />
                           </div>
                           <div class="tab-item-info">
-                            <div class="tab-item-title">${project.data.name[0].text}</div>
-                            <div class="tab-item-route">Мобильное приложение</div>
+                            <div class="tab-item-title">${
+                              project.data.name[0].text
+                            }</div>
+                            <div class="tab-item-route">${
+                              project.data.description[0].text
+                            }</div>
                             <div class="tab-item-additional">
                               <div class="tab-item-duration">
                                 <img src="assets/calendar.svg"/>
-                              <span>10 Days / 9 Nights</span></div>
-                              <div class="tab-item-price">from $900</div>
+                              <span>${project.data["tour-duration"][0].text ||
+                                project.data.tour_duration[0].text}</span></div>
+                              <div class="tab-item-price">from $${
+                                project.data.price
+                              }</div>
 
                       
                             </div>
@@ -144,8 +152,7 @@ function getCategoryProjects(category) {
       });
 
       loading = false;
-      console.log("loaded");
-      tl2.staggerTo(".tab-item", 1, { autoAlpha: 1, y: 0, opacity: 1 }, 0.1);
+      // tl2.staggerTo(".tab-item", 1, { autoAlpha: 1, y: 0, opacity: 1 }, 0.1);
       // tl2.play();
       // tl2.restart();
     });
@@ -154,5 +161,5 @@ function getCategoryProjects(category) {
 
 window.onload = function() {
   tabElements[0].className = "active";
-  this.getCategoryProjects("mobile");
+  this.getCategoryProjects("Hotels");
 };
