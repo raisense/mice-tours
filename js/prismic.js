@@ -92,7 +92,13 @@ tabElements.map((el, i) => {
   });
 });
 
-let loading = false;
+function getSpecificItem(id) {
+  prismic.then((api) => {
+    api.query(PrismicJS.Predicates.at("document.id", id)).then((response) => {
+      console.log(response);
+    });
+  });
+}
 
 const tl2 = new TimelineLite({ paused: true });
 function getCategoryProjects(category) {
@@ -106,9 +112,6 @@ function getCategoryProjects(category) {
     }
 
     api.query([projects, byCategory]).then((response) => {
-      console.log(response);
-      loading = true;
-
       if (response.results.length == 0) {
         contentBox.innerHTML == "sorry";
       }
@@ -140,7 +143,9 @@ function getCategoryProjects(category) {
                       
                             </div>
 
-                              <a href="#" class="more-btn">View details <img src="assets/arrow-right.svg"/> </a> 
+                              <a href="#" data-href="" onclick="getSpecificItem('${
+                                project.id
+                              }')" class="more-btn">View details <img src="assets/arrow-right.svg"/> </a> 
                       
                           </div>
                           
