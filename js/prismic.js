@@ -156,6 +156,13 @@ function getCategoryProjects(category) {
         append(contentBox, projectItem);
       });
 
+      gsap.from(".tab-item", {
+        duration: 0.5,
+        y: 50,
+        opacity: 0,
+        stagger: 0.5
+      });
+
       loading = false;
       // tl2.staggerTo(".tab-item", 1, { autoAlpha: 1, y: 0, opacity: 1 }, 0.1);
       // tl2.play();
