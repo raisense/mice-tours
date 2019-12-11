@@ -36,6 +36,9 @@ const prismic = PrismicJS.api("https://mice-tours.cdn.prismic.io/api/v2", {
 
 prismic.then((api) => {
   const feedback = PrismicJS.Predicates.at("document.type", "feedback");
+  const lang = {
+    lang: mainLang == "en" ? "en-gb" : mainLang == "uz" ? "uz-uz" : mainLang
+  };
   api.query(feedback).then((response) => {
     response.results.map((review) => {
       let slider = document.querySelector(".swiper-container"),
@@ -94,15 +97,18 @@ tabElements.map((el, i) => {
 
 function getSpecificItem(id) {
   prismic.then((api) => {
-    api.query(PrismicJS.Predicates.at("document.id", id)).then((response) => {
-      console.log(response);
-    });
+    api
+      .query(PrismicJS.Predicates.at("document.id", id))
+      .then((response) => {});
   });
 }
 
 const tl2 = new TimelineLite({ paused: true });
 function getCategoryProjects(category) {
   prismic.then((api) => {
+    const lang = {
+      lang: mainLang == "en" ? "en-gb" : mainLang == "uz" ? "uz-uz" : mainLang
+    };
     const projects = PrismicJS.Predicates.at("document.type", "project");
     const byCategory = PrismicJS.Predicates.at("my.project.category", category);
     const contentBox = document.getElementById("tab-content-row");
@@ -111,7 +117,7 @@ function getCategoryProjects(category) {
       contentBox.innerHTML = " ";
     }
 
-    api.query([projects, byCategory]).then((response) => {
+    api.query([projects, byCategory], lang).then((response) => {
       if (response.results.length == 0) {
         contentBox.innerHTML == "sorry";
       }
@@ -134,8 +140,11 @@ function getCategoryProjects(category) {
                             <div class="tab-item-additional">
                               <div class="tab-item-duration">
                                 <img src="assets/calendar.svg"/>
-                              <span>${project.data["tour-duration"][0].text ||
-                                project.data.tour_duration[0].text}</span></div>
+                              <span>${
+                                project.data.tour_duration[0]
+                                  ? project.data.tour_duration[0].text
+                                  : ""
+                              }</span></div>
                               <div class="tab-item-price">from $${
                                 project.data.price
                               }</div>

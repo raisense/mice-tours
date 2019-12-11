@@ -25,7 +25,7 @@ tl.fromTo(
     "-=0.4"
   )
   .fromTo(
-    ".email",
+    ".language",
     {
       y: "-30%",
       opacity: 0

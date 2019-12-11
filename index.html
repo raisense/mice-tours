@@ -11,9 +11,8 @@
   <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css" />
   <link rel="stylesheet" href="css/style.css" />
-  <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.0/pace.min.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/jquery-bez@1.0.11/lib/jquery.bez.min.js"></script> -->
   <link rel="stylesheet" href="css/pace.css" />
+  <script src="https://unpkg.com/i18next/dist/umd/i18next.min.js"></script>
 </head>
 
 <body>
@@ -23,15 +22,25 @@
         <div class="logo">
           <img src="assets/logo.svg" alt="" />
         </div>
-        <span class="email">go@micetravel.uz</span>
+        <div class="dropdown language">
+          <button class="btn btn-link dropdown-toggle" type="button" id="main-lang" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            En
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#" id="second-lang">Uz</a>
+            <a class="dropdown-item" href="#" id="third-lang">Ru</a>
+          </div>
+        </div>
+        <!-- <span class="email">go@micetravel.uz</span> -->
       </div>
       <div class="hero-section">
         <img src="assets/logo-big.png" alt="" />
-        <p><span class="hidetext"> Uzbekistan</span></p>
+        <p><span class="hidetext" data-hero="hero-text"></span></p>
         <p>
-          <span class="hidetext">Meetings Incentives Conferencing Exhibitions</span>
+          <span class="hidetext" data-hero="hero-text"></span>
         </p>
-        <p><span class="hidetext">Organizer</span></p>
+        <p><span class="hidetext" data-hero="hero-text"></span></p>
       </div>
     </div>
   </header>
@@ -200,19 +209,25 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-xs-12">
-            <h1 align="right"><strong> Feel free to contact us for help or additional Info </strong></h1>
+            <h1 align="right">
+              <strong>
+                Feel free to contact us for help or additional Info
+              </strong>
+            </h1>
           </div>
           <div class="col-md-6 col-xs-12">
             <form action="">
               <div class="form-group">
                 <div class="row">
-                  <div class="col"><input type="text" class="form-control" id="exampleInputEmail1" placeholder="Name"
-                      aria-describedby="emailHelp" /></div>
-                  <div class="col"><input type="email" class="form-control" id="exampleInputEmail2" placeholder="e-mail"
-                      aria-describedby="emailHelp" /></div>
+                  <div class="col">
+                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Name"
+                      aria-describedby="emailHelp" />
+                  </div>
+                  <div class="col">
+                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="e-mail"
+                      aria-describedby="emailHelp" />
+                  </div>
                 </div>
-
-
               </div>
               <div class="form-group">
                 <input type="password" class="form-control" placeholder="Password" id="exampleInputPassword1" />
@@ -237,9 +252,16 @@
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.0.2/dist/gsap.min.js"></script>
   <script src="js/js.js"></script>
+  <script src="/js/translate.js"></script>
   <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
   <script src="https://unpkg.com/prismic-javascript"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
   <script src="js/prismic.js"></script>
 </body>
 
