@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css" />
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/pace.css" />
+  <link rel="stylesheet" href="css/list.css" />
   <script src="https://unpkg.com/i18next/dist/umd/i18next.min.js"></script>
 </head>
 
@@ -23,11 +23,12 @@
           <img src="assets/logo.svg" alt="" />
         </div>
         <div class="dropdown language">
+          <img src="assets/lang.svg" class="lang-icon" />
           <button class="btn btn-link dropdown-toggle" type="button" id="main-lang" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             En
           </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="#" id="second-lang">Uz</a>
             <a class="dropdown-item" href="#" id="third-lang">Ru</a>
           </div>
@@ -130,18 +131,15 @@
       </section>
 
       <section class="portfolio">
-        <div class="tab-header">
-          <h1 class="headline">Our <strong> Work </strong></h1>
-          <hr class="review-line" />
-        </div>
         <div class="row">
           <div class="col-sm-12">
             <div class="tab-nav">
               <ul>
-                <li data-tab="Hotels">Hotels</li>
-                <li data-tab="Conference_halls">Conference Halls</li>
-                <li data-tab="Restaurants">Restaurants</li>
-                <li data-tab="Transport">Transport</li>
+                <li data-tab="project">Tours</li>
+                <li data-tab="hotel">Hotels</li>
+                <li data-tab="conference_hall">Conference Halls</li>
+                <li data-tab="restaurant">Restaurants</li>
+                <li data-tab="transpo">Transport</li>
               </ul>
             </div>
           </div>
@@ -157,16 +155,7 @@
         <h1 class="reviews-title">CLIENT <strong> FEEDBACK</strong></h1>
         <hr class="review-line" />
         <p class="reviews-subtitle">Words From Our Happy Tourist</p>
-        <div class="swiper-container">
-          <!-- <div class="swiper-wrapper">
-            <div class="swiper-slide review-item">
-
-            </div>
-          </div> -->
-
-          <!-- <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div> -->
-        </div>
+        <div class="swiper-container"></div>
       </section>
 
       <section class="info">
@@ -187,7 +176,7 @@
                 <img src="./assets/icon2.svg" alt="" />
               </div>
               <div class="info-item__txt">
-                (123) 456-7890 (123) 456-7890
+                (123) 456-7890 <br />(123) 456-7890
               </div>
             </div>
           </div>
@@ -250,6 +239,37 @@
     </footer>
   </div>
 
+  <!-- Modal -->
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header"></div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <div class="modal-body">
+          <div class="modal-body__header">
+            <div class="duration">
+              <p><img src="assets/calendar.svg"> Duration</p>
+              <p class="duration-text"></p>
+            </div>
+            <div class="routine">
+              <p><img src="assets/calendar.svg"> Routine</p>
+              <p class="routine-text"></p>
+            </div>
+          </div>
+          <div class="modal-body__info">
+
+          </div>
+          <div class="modal-body__conditions">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.0.2/dist/gsap.min.js"></script>
   <script src="js/js.js"></script>
   <script src="/js/translate.js"></script>
@@ -263,6 +283,7 @@
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
   </script>
   <script src="js/prismic.js"></script>
+  <script src="js/helpers.js"></script>
 </body>
 
 </html>

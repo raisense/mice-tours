@@ -1,0 +1,103 @@
+:root {
+    --primary-color: #264698;
+    --secondary-color: #a8377a;
+    --violet: #5c338c;
+    --line-color: rgb(218, 218, 218);
+}
+
+main {
+    padding: 4rem 0;
+}
+
+aside ul {
+    list-style: none;
+}
+
+aside ul li {
+    padding: 16px 0;
+}
+
+aside ul li:not(:last-child) {
+    border-bottom: 1px solid var(--line-color)
+}
+
+aside ul li {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    color: #A5ABBC;
+    cursor: pointer;
+}
+
+aside ul li.active {
+    color: var(--primary-color);
+}
+
+aside ul li:hover {
+    text-decoration: none;
+    color: var(--primary-color)
+}
+
+
+.list-header {
+    height: 100px;
+}
+
+.list-header:before {
+    content: none;
+}
+
+.list-title {
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 33px;
+    letter-spacing: -0.01em;
+    color: #264698;
+}
+
+.list-content .tab-item-title {
+    margin-bottom: 0;
+}
+
+.region {
+    font-size: 14px;
+    line-height: 17px;
+    color: #929292;
+}
+
+.sort-result {
+    font-size: 14px;
+    line-height: 17px;
+    color: #A5ABBC;
+    padding: 16px 0;
+    border-top: 1px solid var(--line-color)
+}
+
+.address {
+    font-size: 12px;
+    line-height: 14px;
+    color: #264698;
+    padding: 8px 0 16px 0;
+}
+
+.additional-info {
+    font-size: 14px;
+    line-height: 17px;
+    color: #264698;
+    padding-top: 16px;
+    text-align: center;
+    border-top: 1px solid var(--line-color);
+}
+
+.content-top-nav {
+    color: #A5ABBC;
+    padding: 16px 0;
+}
+
+.btn-secondary {
+    background: #F0F0F0;
+    border-radius: 6px;
+    color: #979797;
+    border: 0;
+    padding: 3px 11px;
+}

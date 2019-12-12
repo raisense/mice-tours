@@ -4,7 +4,7 @@ i18next.init(
   {
     lng: mainLang,
     resources: {
-      uz: {
+      tr: {
         translation: {
           heroText1: "O'zbekiston",
           heroText2: "Kelajagi buyuk davlat",
@@ -196,26 +196,26 @@ function changeLanguageBtn(lng) {
 
   switch (lng) {
     case "en":
-      mainBtn.innerHTML = "En";
-      secondBtn.innerHTML = "Uz";
-      thirdBtn.innerHTML = "Ru";
+      mainBtn.innerHTML = "English";
+      secondBtn.innerHTML = "<img class='flag' src='assets/tr.svg'/> Türkçe";
+      thirdBtn.innerHTML = "<img class='flag' src='assets/ru.svg'/> Русский";
 
-      secondBtn.addEventListener("click", () => changeLng("uz"));
+      secondBtn.addEventListener("click", () => changeLng("tr"));
       thirdBtn.addEventListener("click", () => changeLng("ru"));
 
       return;
     case "ru":
-      mainBtn.innerHTML = "Ru";
-      secondBtn.innerHTML = "En";
-      thirdBtn.innerHTML = "Uz";
+      mainBtn.innerHTML = "Русский";
+      secondBtn.innerHTML = "<img class='flag' src='assets/us.svg'/> English";
+      thirdBtn.innerHTML = "<img class='flag' src='assets/tr.svg'/> Türkçe";
 
       secondBtn.addEventListener("click", () => changeLng("en"));
-      thirdBtn.addEventListener("click", () => changeLng("uz"));
+      thirdBtn.addEventListener("click", () => changeLng("tr"));
       return;
-    case "uz":
-      mainBtn.innerHTML = "Uz";
-      secondBtn.innerHTML = "En";
-      thirdBtn.innerHTML = "Ru";
+    case "tr":
+      mainBtn.innerHTML = "Türkçe";
+      secondBtn.innerHTML = "<img class='flag' src='assets/us.svg'/> English";
+      thirdBtn.innerHTML = "<img class='flag' src='assets/ru.svg'/> Русский";
 
       secondBtn.addEventListener("click", () => changeLng("en"));
       thirdBtn.addEventListener("click", () => changeLng("ru"));

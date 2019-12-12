@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/list.css" />
+
+    <script src="https://unpkg.com/i18next/dist/umd/i18next.min.js"></script>
+</head>
+
+<body>
+
+    <header class="list-header" style="background: #a8377a;">
+        <div class="container">
+            <div class="top-nav">
+                <div class="logo" style="opacity: 1;">
+                    <a href="index.html">
+                        <img src="assets/logo.svg" alt="" /></a>
+                </div>
+                <div class="dropdown language">
+                    <img src="assets/lang.svg" class="lang-icon" />
+                    <button class="btn btn-link dropdown-toggle" type="button" id="main-lang" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        En
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#" id="second-lang">Uz</a>
+                        <a class="dropdown-item" href="#" id="third-lang">Ru</a>
+                    </div>
+                </div>
+                <!-- <span class="email">go@micetravel.uz</span> -->
+            </div>
+
+        </div>
+
+    </header>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <aside>
+                        <ul>
+                            <li data-tab="hotel"> Hotels
+                            </li>
+                            <li data-tab="conference_hall">Conference
+                                Halls</li>
+                            <li data-tab="restaurant">Restaurants</li>
+                            <li data-tab="transpo">Transport</li>
+                        </ul>
+                    </aside>
+                </div>
+                <div class="col-sm-9">
+                    <div class="main">
+                        <div class="content-header">
+                            <h1 class="list-title">Hotels</h1>
+                            <div class="content-top-nav">
+                                <span>Region:</span>
+                                <div class="btn-group">
+                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button"
+                                        data-toggle="dropdown" aria-expanded="false">
+                                        Tashkent
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a href="#" class="dropdown-item">Tashkent</a>
+                                        <a href="#" class="dropdown-item">Tashkent</a>
+                                        <a href="#" class="dropdown-item">Tashkent</a>
+                                        <a href="#" class="dropdown-item">Tashkent</a>
+                                        <a href="#" class="dropdown-item">Tashkent</a>
+                                        <a href="#" class="dropdown-item">Tashkent</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="list-content">
+                            <p class="sort-result"></p>
+                            <div class="tab-content">
+                                <div class="row list-row">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+
+    <section class="info">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                    <div class="info-item">
+                        <div class="info-item__icon">
+                            <img src="./assets/icon1.svg" alt="" />
+                        </div>
+                        <div class="info-item__txt">
+                            123 Main Street Your City, State Country.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <div class="info-item">
+                        <div class="info-item__icon">
+                            <img src="./assets/icon2.svg" alt="" />
+                        </div>
+                        <div class="info-item__txt">
+                            (123) 456-7890 <br />(123) 456-7890
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <div class="info-item">
+                        <div class="info-item__icon">
+                            <img src="./assets/icon3.svg" alt="" />
+                        </div>
+                        <div class="info-item__txt">
+                            go@micetravel.uz
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-xs-12">
+                    <h1 align="right">
+                        <strong>
+                            Feel free to contact us for help or additional Info
+                        </strong>
+                    </h1>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <form action="">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col">
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Name"
+                                        aria-describedby="emailHelp" />
+                                </div>
+                                <div class="col">
+                                    <input type="email" class="form-control" id="exampleInputEmail2"
+                                        placeholder="e-mail" aria-describedby="emailHelp" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Password"
+                                id="exampleInputPassword1" />
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="container">
+            <div class="span">MICE Tours © 2019. All Rights Reserved</div>
+            <div class="span">
+                Developed with love by <a href="raisense.uz"> Raisense</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.0.2/dist/gsap.min.js"></script>
+    <script src="/js/translate.js"></script>
+    <script src="https://unpkg.com/prismic-javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <script src="js/list.js"></script>
+    <script src="js/helpers.js"></script>
+</body>
+
+</html>
