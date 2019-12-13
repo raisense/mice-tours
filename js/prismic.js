@@ -85,7 +85,7 @@ function getSpecificItem(id) {
 
         modalHeader.style.backgroundImage = `url('${data.image.url}')`;
         modalHeader.innerHTML = `<h1>${data.name[0].text}</h1>`;
-        modalConditions.innerHTML = `${data.conditions[0].text}`;
+        // modalConditions.innerHTML = `${data.conditions[0].text}`;
         durationText.innerHTML =
           data.tour_duration.length > 0 ? data.tour_duration[0].text : "";
         routineText.innerHTML = data.description[0].text;
@@ -94,7 +94,6 @@ function getSpecificItem(id) {
           return;
         } else {
           data.info.map((el) => {
-            console.log(modalInfo.hasChildNodes());
             if (el.type == "paragraph") {
               let p = createNode("p");
               p.innerHTML = el.text;
@@ -103,6 +102,22 @@ function getSpecificItem(id) {
               let li = createNode("li");
               li.innerHTML = el.text;
               append(modalInfo, li);
+            }
+          });
+        }
+
+        if (modalConditions.hasChildNodes()) {
+          return;
+        } else {
+          data.conditions.map((el) => {
+            if (el.type == "paragraph") {
+              let p = createNode("p");
+              p.innerHTML = el.text;
+              append(modalConditions, p);
+            } else if (el.type == "list-item") {
+              let li = createNode("li");
+              li.innerHTML = el.text;
+              append(modalConditions, li);
             }
           });
         }

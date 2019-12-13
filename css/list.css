@@ -155,3 +155,44 @@ aside ul li:hover {
     font-weight: bold;
     color: var(--primary-color)
 }
+
+.modal .custom-form {
+    width: 500px;
+    margin-top: 4rem;
+}
+
+.custom-form {
+    /* width: 500px; */
+    margin: 0 auto;
+    font-size: 14px;
+}
+
+.custom-form input,
+.custom-form textarea {
+    width: 100%;
+    padding: 16px 20px;
+    border-collapse: collapse;
+    border: 1px solid var(--line-color);
+}
+
+.custom-form .col-xs-12 {
+    width: 100%;
+}
+
+.custom-form .col-xs-6 {
+    width: 50%;
+}
+
+input[type="submit"] {
+    background-color: #fff;
+    color: var(--primary-color);
+    border: 1px solid var(--line-color);
+    font-weight: bold;
+}
+
+.form-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}

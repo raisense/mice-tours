@@ -728,4 +728,29 @@ footer a:active {
   footer>div {
     flex-direction: column;
   }
+
+  .close {
+    right: 12px;
+    top: 8px;
+    z-index: 4;
+  }
+
+  .modal-body {
+    padding: 2rem 2rem !important;
+  }
+
+  .modal .custom-form {
+    width: 100% !important;
+  }
+
+  .modal .custom-form .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .modal-body__conditions {
+    margin-left: -2rem;
+    margin-right: -2rem;
+    padding: 2rem !important;
+  }
 }
