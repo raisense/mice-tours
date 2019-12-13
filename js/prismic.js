@@ -251,7 +251,7 @@ function getCategoryProjects(category) {
                                 ${project.data.region}
                             </div>
                             <div class="address">
-                                <img src="/assets/location.svg">
+                                <img src="assets/location.svg">
                                 <span>${project.data.address}</span>
                             </div>
                             <div class="additional-info">
@@ -288,7 +288,7 @@ function getCategoryProjects(category) {
                                   ${project.data.location_region}
                               </div>
                               <div class="address">
-                                  <img src="/assets/location.svg">
+                                  <img src="assets/location.svg">
                                   <span>${project.data.address}</span>
                               </div>
                               <div class="additional-info">
@@ -327,7 +327,7 @@ function getCategoryProjects(category) {
                                     ${project.data.region}
                                 </div>
                                 <div class="address">
-                                    <img src="/assets/location.svg">
+                                    <img src="assets/location.svg">
                                     <span>${project.data.adress[0].text}</span>
                                 </div>   
                               </div>
@@ -358,7 +358,7 @@ function getCategoryProjects(category) {
                                       }</div>
                                       
                                     <div class="seats">
-                                      <img src="/assets/person.svg">
+                                      <img src="assets/person.svg">
                                       <span> ${
                                         mainLang == "en"
                                           ? "Number of seats: "
