@@ -101,3 +101,57 @@ aside ul li:hover {
     border: 0;
     padding: 3px 11px;
 }
+
+.modal-body {
+    padding: 2rem 4rem;
+}
+
+.modal-body__info>p {
+    margin-bottom: 1rem;
+}
+
+.modal-body__info>:not(p)+li {
+    margin-bottom: 1rem;
+}
+
+.modal-body__conditions {
+    background-color: #F4F4F4;
+    padding: 24px;
+    margin-top: 24px;
+}
+
+.modal-body__header {
+    display: flex;
+}
+
+.modal-body__header>div {
+    padding: 24px 0;
+}
+
+.modal-body__header>div:not(:first-child) {
+    padding-left: 4rem;
+}
+
+.duration>p:not([class]),
+.routine>p:not([class]) {
+    font-size: 14px;
+    color: var(--secondary-color);
+}
+
+.duration img,
+.routine img {
+    vertical-align: -2px;
+}
+
+.duration-text,
+.routine-text {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-style: 16px;
+}
+
+.conditions-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color)
+}

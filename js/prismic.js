@@ -81,24 +81,31 @@ function getSpecificItem(id) {
         const durationText = document.querySelector(".duration-text");
         const routineText = document.querySelector(".routine-text");
         const modalInfo = document.querySelector(".modal-body__info");
-        const modalConditions = document.querySelector(
-          ".modal-body__conditions"
-        );
+        const modalConditions = document.querySelector(".conditions-body");
 
         modalHeader.style.backgroundImage = `url('${data.image.url}')`;
         modalHeader.innerHTML = `<h1>${data.name[0].text}</h1>`;
-        modalConditions.innerHTML = data.conditions[0].text;
+        modalConditions.innerHTML = `${data.conditions[0].text}`;
         durationText.innerHTML =
           data.tour_duration.length > 0 ? data.tour_duration[0].text : "";
         routineText.innerHTML = data.description[0].text;
         console.log(data);
-        data.info.map((el) => {
-          if (el.type == "paragraph") {
-            let p = createNode("p");
-            p.innerHTML = el.text;
-            append(modalInfo, p);
-          }
-        });
+        if (modalInfo.hasChildNodes()) {
+          return;
+        } else {
+          data.info.map((el) => {
+            console.log(modalInfo.hasChildNodes());
+            if (el.type == "paragraph") {
+              let p = createNode("p");
+              p.innerHTML = el.text;
+              append(modalInfo, p);
+            } else if (el.type == "list-item") {
+              let li = createNode("li");
+              li.innerHTML = el.text;
+              append(modalInfo, li);
+            }
+          });
+        }
       });
   });
 }
