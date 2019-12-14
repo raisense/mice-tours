@@ -72,24 +72,29 @@ function getSpecificItem(id) {
     const lang = {
       lang: mainLang == "en" ? "en-gb" : mainLang == "uz" ? "uz-uz" : mainLang
     };
+    const modalBody = document.querySelector(".modal-dialog");
+    const modalContent = document.querySelector(".modal-content");
+    const modalHeader = document.querySelector(".modal-header");
+    const durationText = document.querySelector(".duration-text");
+    const routineText = document.querySelector(".routine-text");
+    const modalInfo = document.querySelector(".modal-body__info");
+    const modalConditions = document.querySelector(".conditions-body");
+    const hiddenInput = document.querySelector(".tour-name");
+    const loader = `Loading...`;
+    modalBody.innerHTML = loader;
+
     api
       .query(PrismicJS.Predicates.at("document.id", id), lang)
       .then((response) => {
         const data = response.results[0].data;
-        const modalBody = document.querySelector(".modal-body");
-        const modalHeader = document.querySelector(".modal-header");
-        const durationText = document.querySelector(".duration-text");
-        const routineText = document.querySelector(".routine-text");
-        const modalInfo = document.querySelector(".modal-body__info");
-        const modalConditions = document.querySelector(".conditions-body");
 
         modalHeader.style.backgroundImage = `url('${data.image.url}')`;
         modalHeader.innerHTML = `<h1>${data.name[0].text}</h1>`;
-        // modalConditions.innerHTML = `${data.conditions[0].text}`;
+        hiddenInput.setAttribute("value", data.name[0].text);
         durationText.innerHTML =
           data.tour_duration.length > 0 ? data.tour_duration[0].text : "";
         routineText.innerHTML = data.description[0].text;
-        console.log(data);
+
         if (modalInfo.hasChildNodes()) {
           return;
         } else {
@@ -121,6 +126,8 @@ function getSpecificItem(id) {
             }
           });
         }
+
+        modalBody.innerHTML = nodeToString(modalContent);
       });
   });
 }
@@ -132,6 +139,7 @@ function getCategoryProjects(category) {
   };
   const projects = PrismicJS.Predicates.at("document.type", category);
   const contentBox = document.getElementById("tab-content-row");
+  const othersBtn = createNode("div");
 
   prismic.then((api) => {
     if (contentBox.hasChildNodes) {
@@ -147,7 +155,6 @@ function getCategoryProjects(category) {
         case "project":
           response.results.map((project) => {
             const projectItem = createNode("div");
-            console.log(mainLang);
 
             projectItem.innerHTML = `
                     
@@ -203,7 +210,6 @@ function getCategoryProjects(category) {
         case "hotel":
           response.results.map((project) => {
             const projectItem = createNode("div");
-            console.log(mainLang);
 
             projectItem.innerHTML = `
                       
@@ -216,36 +222,7 @@ function getCategoryProjects(category) {
                                   project.data.name[0].text
                                 }</div>
                                 <div class="rating">
-                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M5 1.12978L6.0211 3.19874L6.13743 3.43446L6.39756 3.47226L8.6808 3.80403L7.02864 5.4145L6.8404 5.59798L6.88484 5.85707L7.27486 8.13108L5.23267 7.05743L5 6.93511L4.76733 7.05743L2.72514 8.13108L3.11516 5.85707L3.1596 5.59798L2.97136 5.4145L1.3192 3.80403L3.60244 3.47226L3.86257 3.43446L3.9789 3.19874L5 1.12978Z"
-                                        stroke="#B5287C" />
-                                </svg>
-                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M5 1.12978L6.0211 3.19874L6.13743 3.43446L6.39756 3.47226L8.6808 3.80403L7.02864 5.4145L6.8404 5.59798L6.88484 5.85707L7.27486 8.13108L5.23267 7.05743L5 6.93511L4.76733 7.05743L2.72514 8.13108L3.11516 5.85707L3.1596 5.59798L2.97136 5.4145L1.3192 3.80403L3.60244 3.47226L3.86257 3.43446L3.9789 3.19874L5 1.12978Z"
-                                        stroke="#B5287C" />
-                                </svg>
-                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M5 1.12978L6.0211 3.19874L6.13743 3.43446L6.39756 3.47226L8.6808 3.80403L7.02864 5.4145L6.8404 5.59798L6.88484 5.85707L7.27486 8.13108L5.23267 7.05743L5 6.93511L4.76733 7.05743L2.72514 8.13108L3.11516 5.85707L3.1596 5.59798L2.97136 5.4145L1.3192 3.80403L3.60244 3.47226L3.86257 3.43446L3.9789 3.19874L5 1.12978Z"
-                                        stroke="#B5287C" />
-                                </svg>
-                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M5 1.12978L6.0211 3.19874L6.13743 3.43446L6.39756 3.47226L8.6808 3.80403L7.02864 5.4145L6.8404 5.59798L6.88484 5.85707L7.27486 8.13108L5.23267 7.05743L5 6.93511L4.76733 7.05743L2.72514 8.13108L3.11516 5.85707L3.1596 5.59798L2.97136 5.4145L1.3192 3.80403L3.60244 3.47226L3.86257 3.43446L3.9789 3.19874L5 1.12978Z"
-                                        stroke="#B5287C" />
-                                </svg>
-                                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M5 1.12978L6.0211 3.19874L6.13743 3.43446L6.39756 3.47226L8.6808 3.80403L7.02864 5.4145L6.8404 5.59798L6.88484 5.85707L7.27486 8.13108L5.23267 7.05743L5 6.93511L4.76733 7.05743L2.72514 8.13108L3.11516 5.85707L3.1596 5.59798L2.97136 5.4145L1.3192 3.80403L3.60244 3.47226L3.86257 3.43446L3.9789 3.19874L5 1.12978Z"
-                                        stroke="#B5287C" />
-                                </svg>
+                                ${getCorrectStars(project.data.hotel_rating)}
                             </div>
                             <div class="region">
                                 ${project.data.region}
@@ -264,12 +241,19 @@ function getCategoryProjects(category) {
             projectItem.className = "col-xs-12 col-sm-6 col-md-4 col-lg-3";
             append(contentBox, projectItem);
           });
+          othersBtn.innerHTML = `<button onclick='handleRoute("${category}")' class="show-all">${
+            mainLang == "en"
+              ? "Show all"
+              : mainLang == "tr"
+              ? "Hepsini göster"
+              : "Показать все"
+          }</button>`;
+          append(contentBox, othersBtn);
           break;
 
         case "conference_hall":
           response.results.map((project) => {
             const projectItem = createNode("div");
-            console.log(project);
 
             projectItem.innerHTML = `
                         
@@ -307,12 +291,19 @@ function getCategoryProjects(category) {
             projectItem.className = "col-xs-12 col-sm-6 col-md-4 col-lg-3";
             append(contentBox, projectItem);
           });
+          othersBtn.innerHTML = `<button onclick='handleRoute("${category}")'>${
+            mainLang == "en"
+              ? "Show all"
+              : mainLang == "tr"
+              ? "Hepsini göster"
+              : "Показать все"
+          }</button>`;
+          append(contentBox, othersBtn);
           break;
 
         case "restaurant":
           response.results.map((project) => {
             const projectItem = createNode("div");
-            console.log(project);
 
             projectItem.innerHTML = `
                           
@@ -335,13 +326,20 @@ function getCategoryProjects(category) {
             projectItem.className = "col-xs-12 col-sm-6 col-md-4 col-lg-3";
             append(contentBox, projectItem);
           });
+
+          othersBtn.innerHTML = `<button onclick='handleRoute("${category}")'>${
+            mainLang == "en"
+              ? "Show all"
+              : mainLang == "tr"
+              ? "Hepsini göster"
+              : "Показать все"
+          }</button>`;
+          append(contentBox, othersBtn);
           break;
 
         case "transpo":
           response.results.map((project) => {
             const projectItem = createNode("div");
-            console.log(project);
-
             projectItem.innerHTML = `
                             
                                 <div class="tab-item">
@@ -373,6 +371,14 @@ function getCategoryProjects(category) {
             projectItem.className = "col-xs-12 col-sm-6 col-md-4 col-lg-3";
             append(contentBox, projectItem);
           });
+          othersBtn.innerHTML = `<button onclick='handleRoute("${category}")'>${
+            mainLang == "en"
+              ? "Show all"
+              : mainLang == "tr"
+              ? "Hepsini göster"
+              : "Показать все"
+          }</button>`;
+          append(contentBox, othersBtn);
           break;
       }
 
@@ -389,7 +395,10 @@ function getCategoryProjects(category) {
   });
 }
 
-function handleRoute() {}
+function handleRoute(type) {
+  localStorage.setItem("current", type);
+  window.location.href = "list.html";
+}
 
 window.onload = function() {
   tabElements[0].className = "active";

@@ -58,8 +58,8 @@
                 <div class="col-sm-9">
                     <div class="main">
                         <div class="content-header">
-                            <h1 class="list-title">Hotels</h1>
-                            <div class="content-top-nav">
+                            <h1 class="list-title"></h1>
+                            <!-- <div class="content-top-nav">
                                 <span>Region:</span>
                                 <div class="btn-group">
                                     <button class="btn btn-secondary btn-sm dropdown-toggle" type="button"
@@ -75,7 +75,7 @@
                                         <a href="#" class="dropdown-item">Tashkent</a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
 
                         <div class="list-content">
@@ -138,31 +138,33 @@
             <div class="row">
                 <div class="col-md-6 col-xs-12">
                     <h1 align="right">
-                        <strong>
+                        <strong class="footer-form-title">
                             Feel free to contact us for help or additional Info
                         </strong>
                     </h1>
                 </div>
                 <div class="col-md-6 col-xs-12">
-                    <form action="">
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Name"
-                                        aria-describedby="emailHelp" />
-                                </div>
-                                <div class="col">
-                                    <input type="email" class="form-control" id="exampleInputEmail2"
-                                        placeholder="e-mail" aria-describedby="emailHelp" />
-                                </div>
+                    <form action="https://formspree.io/mdokrdaz" class="custom-form custom-form-footer" method="POST">
+                        <div class="row">
+                            <div class="col-xs-6"><input type="text" data-input name="name" placeholder="Full Name"
+                                    required></div>
+                            <div class="col-xs-6"><input type="email" data-input name="_replyto" placeholder="E-mail"
+                                    required>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Password"
-                                id="exampleInputPassword1" />
+                        <div class="row">
+                            <div class="col-xs-12"><input type="text" data-input name="subject" placeholder="Subject"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12"><textarea type="text" data-input name="details"
+                                    placeholder="Travel details" required></textarea></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12"><input type="submit" value="Send"></div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Send</button>
                     </form>
                 </div>
             </div>

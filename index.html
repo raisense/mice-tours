@@ -165,7 +165,7 @@
               <div class="info-item__icon">
                 <img src="assets/icon1.svg" alt="" />
               </div>
-              <div class="info-item__txt">
+              <div class="info-item__txt info-address">
                 Bukhara street 26, Tashkent Asiatour 100123, Uzbekistan
               </div>
             </div>
@@ -199,22 +199,25 @@
         <div class="row">
           <div class="col-md-6 col-xs-12">
             <h1 align="right">
-              <strong>
+              <strong class="footer-form-title">
                 Feel free to contact us for help or additional Info
               </strong>
             </h1>
           </div>
           <div class="col-md-6 col-xs-12">
-            <form action="" class="custom-form">
+            <form action="https://formspree.io/mdokrdaz" class="custom-form custom-form-footer" method="POST">
               <div class="row">
-                <div class="col-xs-6"><input type="text" placeholder="Full Name"></div>
-                <div class="col-xs-6"><input type="email" placeholder="E-mail"></div>
+                <div class="col-xs-6"><input type="text" data-input name="name" placeholder="Full Name" required></div>
+                <div class="col-xs-6"><input type="email" data-input name="_replyto" placeholder="E-mail" required>
+                </div>
               </div>
               <div class="row">
-                <div class="col-xs-12"><input type="text" placeholder="Subject"></div>
+                <div class="col-xs-12"><input type="text" data-input name="subject" placeholder="Subject" required>
+                </div>
               </div>
               <div class="row">
-                <div class="col-xs-12"><textarea type="text" placeholder="Travel details"></textarea></div>
+                <div class="col-xs-12"><textarea type="text" data-input name="details" placeholder="Travel details"
+                    required></textarea></div>
               </div>
               <div class="row">
                 <div class="col-xs-12"><input type="submit" value="Send"></div>
@@ -235,6 +238,10 @@
     </footer>
   </div>
 
+  <div class="loader">
+    <p>Loading</p>
+  </div>
+
   <!-- Modal -->
   <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -247,11 +254,11 @@
         <div class="modal-body">
           <div class="modal-body__header">
             <div class="duration">
-              <p><img src="assets/calendar.svg"> Duration</p>
+              <p><img src="assets/calendar.svg"> <span class="modal-label"> Duration</span></p>
               <p class="duration-text"></p>
             </div>
             <div class="routine">
-              <p><img src="assets/calendar.svg"> Routine</p>
+              <p><img src="assets/calendar.svg"> <span class="modal-label">Routine</span> </p>
               <p class="routine-text"></p>
             </div>
           </div>
@@ -260,21 +267,26 @@
             <h3 class="conditions-title">Conditions</h3>
             <p class="conditions-body"></p>
           </div>
-          <form action="" class="custom-form">
+          <form action="https://formspree.io/xjvkqowg" method="POST" class="custom-form custom-form-modal">
             <h3 class="form-header">For more details, please leave a request</h3>
             <div class="row">
-              <div class="col-xs-12"><input type="text" placeholder="Full Name"></div>
+              <input type="text" class="tour-name" name="tour-name" value="Something" style="display: none;">
+              <div class="col-xs-12"><input type="text" data-input name="full-name" placeholder="Full Name"></div>
             </div>
             <div class="row">
-              <div class="col-xs-6"><input type="text" placeholder="Phone number"></div>
-              <div class="col-xs-6"><input type="email" placeholder="E-mail"></div>
+              <div class="col-xs-6"><input type="text" data-input name="phone" placeholder="Phone number"></div>
+              <div class="col-xs-6"><input type="email" data-input name="email" placeholder="E-mail"></div>
             </div>
             <div class="row">
-              <div class="col-xs-6"><input type="text" placeholder="Number of travelers"></div>
-              <div class="col-xs-6"><input type="text" placeholder="Date of travel"></div>
+              <div class="col-xs-6"><input type="text" data-input name="number-of-travelers"
+                  placeholder="Number of travelers">
+              </div>
+              <div class="col-xs-6"><input type="text" data-input name="date-of-travel" placeholder="Date of travel">
+              </div>
             </div>
             <div class="row">
-              <div class="col-xs-12"><textarea type="text" placeholder="Travel details"></textarea></div>
+              <div class="col-xs-12"><textarea type="text" data-input name="travel-details"
+                  placeholder="Travel details"></textarea></div>
             </div>
             <div class="row">
               <div class="col-xs-12"><input type="submit" value="Send"></div>
@@ -282,6 +294,8 @@
 
           </form>
         </div>
+
+
       </div>
     </div>
   </div>

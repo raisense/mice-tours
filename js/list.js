@@ -27,13 +27,20 @@ function getCards(type) {
 
       //Check if there's actually response from api
       if (response.results != 0) {
-        result.innerHTML = response.results_size;
+        let size = response.results_size;
+        result.innerHTML = `${
+          mainLang == "en"
+            ? size + " " + changeHeaderTitle() + "<span> are shown </span>"
+            : mainLang == "tr"
+            ? size + " " + changeHeaderTitle() + "<span> gösterildi </span>"
+            : size + " " + changeHeaderTitle() + "<span> показаны </span>"
+        }`;
 
         switch (type) {
           case "hotel":
             response.results.map((project) => {
               const projectItem = createNode("div");
-              console.log(mainLang);
+              console.log(project);
 
               projectItem.innerHTML = `
                         
@@ -48,36 +55,8 @@ function getCards(type) {
                                     project.data.name[0].text
                                   }</div>
                                   <div class="rating">
-                                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                      xmlns="http://www.w3.org/2000/svg">
-                                      <path
-                                          d="M5 1.12978L6.0211 3.19874L6.13743 3.43446L6.39756 3.47226L8.6808 3.80403L7.02864 5.4145L6.8404 5.59798L6.88484 5.85707L7.27486 8.13108L5.23267 7.05743L5 6.93511L4.76733 7.05743L2.72514 8.13108L3.11516 5.85707L3.1596 5.59798L2.97136 5.4145L1.3192 3.80403L3.60244 3.47226L3.86257 3.43446L3.9789 3.19874L5 1.12978Z"
-                                          stroke="#B5287C" />
-                                  </svg>
-                                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                      xmlns="http://www.w3.org/2000/svg">
-                                      <path
-                                          d="M5 1.12978L6.0211 3.19874L6.13743 3.43446L6.39756 3.47226L8.6808 3.80403L7.02864 5.4145L6.8404 5.59798L6.88484 5.85707L7.27486 8.13108L5.23267 7.05743L5 6.93511L4.76733 7.05743L2.72514 8.13108L3.11516 5.85707L3.1596 5.59798L2.97136 5.4145L1.3192 3.80403L3.60244 3.47226L3.86257 3.43446L3.9789 3.19874L5 1.12978Z"
-                                          stroke="#B5287C" />
-                                  </svg>
-                                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                      xmlns="http://www.w3.org/2000/svg">
-                                      <path
-                                          d="M5 1.12978L6.0211 3.19874L6.13743 3.43446L6.39756 3.47226L8.6808 3.80403L7.02864 5.4145L6.8404 5.59798L6.88484 5.85707L7.27486 8.13108L5.23267 7.05743L5 6.93511L4.76733 7.05743L2.72514 8.13108L3.11516 5.85707L3.1596 5.59798L2.97136 5.4145L1.3192 3.80403L3.60244 3.47226L3.86257 3.43446L3.9789 3.19874L5 1.12978Z"
-                                          stroke="#B5287C" />
-                                  </svg>
-                                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                      xmlns="http://www.w3.org/2000/svg">
-                                      <path
-                                          d="M5 1.12978L6.0211 3.19874L6.13743 3.43446L6.39756 3.47226L8.6808 3.80403L7.02864 5.4145L6.8404 5.59798L6.88484 5.85707L7.27486 8.13108L5.23267 7.05743L5 6.93511L4.76733 7.05743L2.72514 8.13108L3.11516 5.85707L3.1596 5.59798L2.97136 5.4145L1.3192 3.80403L3.60244 3.47226L3.86257 3.43446L3.9789 3.19874L5 1.12978Z"
-                                          stroke="#B5287C" />
-                                  </svg>
-                                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                      xmlns="http://www.w3.org/2000/svg">
-                                      <path
-                                          d="M5 1.12978L6.0211 3.19874L6.13743 3.43446L6.39756 3.47226L8.6808 3.80403L7.02864 5.4145L6.8404 5.59798L6.88484 5.85707L7.27486 8.13108L5.23267 7.05743L5 6.93511L4.76733 7.05743L2.72514 8.13108L3.11516 5.85707L3.1596 5.59798L2.97136 5.4145L1.3192 3.80403L3.60244 3.47226L3.86257 3.43446L3.9789 3.19874L5 1.12978Z"
-                                          stroke="#B5287C" />
-                                  </svg>
+                                  ${getCorrectStars(project.data.hotel_rating)}
+                                  
                               </div>
                               <div class="region">
                                   ${project.data.region}
@@ -209,81 +188,16 @@ function getCards(type) {
             });
             break;
         }
-        // response.results.map((item) => {
-        //   console.log(item);
-        //   let el = createNode("div");
-        //   el.className = "col-sm-4";
-        //   el.innerHTML = `
-        //     <div class="tab-item">
-        //         <div class="tab-item-img">
-        //             <img src="${
-        //               item.data.image
-        //                 ? item.data.image.url
-        //                 : item.data.transport_image
-        //                 ? item.data.transport_image.url
-        //                 : item.data.restaurant_image.url
-        //             }" alt="">
-        //         </div>
-        //         <div class="tab-item-info">
-        //             <div class="tab-item-title">${item.data.name[0].text}</div>
-        //             <div class="rating">
-        //                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-        //                     xmlns="http://www.w3.org/2000/svg">
-        //                     <path
-        //                         d="M5 1.12978L6.0211 3.19874L6.13743 3.43446L6.39756 3.47226L8.6808 3.80403L7.02864 5.4145L6.8404 5.59798L6.88484 5.85707L7.27486 8.13108L5.23267 7.05743L5 6.93511L4.76733 7.05743L2.72514 8.13108L3.11516 5.85707L3.1596 5.59798L2.97136 5.4145L1.3192 3.80403L3.60244 3.47226L3.86257 3.43446L3.9789 3.19874L5 1.12978Z"
-        //                         stroke="#B5287C" />
-        //                 </svg>
-        //                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-        //                     xmlns="http://www.w3.org/2000/svg">
-        //                     <path
-        //                         d="M5 1.12978L6.0211 3.19874L6.13743 3.43446L6.39756 3.47226L8.6808 3.80403L7.02864 5.4145L6.8404 5.59798L6.88484 5.85707L7.27486 8.13108L5.23267 7.05743L5 6.93511L4.76733 7.05743L2.72514 8.13108L3.11516 5.85707L3.1596 5.59798L2.97136 5.4145L1.3192 3.80403L3.60244 3.47226L3.86257 3.43446L3.9789 3.19874L5 1.12978Z"
-        //                         stroke="#B5287C" />
-        //                 </svg>
-        //                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-        //                     xmlns="http://www.w3.org/2000/svg">
-        //                     <path
-        //                         d="M5 1.12978L6.0211 3.19874L6.13743 3.43446L6.39756 3.47226L8.6808 3.80403L7.02864 5.4145L6.8404 5.59798L6.88484 5.85707L7.27486 8.13108L5.23267 7.05743L5 6.93511L4.76733 7.05743L2.72514 8.13108L3.11516 5.85707L3.1596 5.59798L2.97136 5.4145L1.3192 3.80403L3.60244 3.47226L3.86257 3.43446L3.9789 3.19874L5 1.12978Z"
-        //                         stroke="#B5287C" />
-        //                 </svg>
-        //                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-        //                     xmlns="http://www.w3.org/2000/svg">
-        //                     <path
-        //                         d="M5 1.12978L6.0211 3.19874L6.13743 3.43446L6.39756 3.47226L8.6808 3.80403L7.02864 5.4145L6.8404 5.59798L6.88484 5.85707L7.27486 8.13108L5.23267 7.05743L5 6.93511L4.76733 7.05743L2.72514 8.13108L3.11516 5.85707L3.1596 5.59798L2.97136 5.4145L1.3192 3.80403L3.60244 3.47226L3.86257 3.43446L3.9789 3.19874L5 1.12978Z"
-        //                         stroke="#B5287C" />
-        //                 </svg>
-        //                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-        //                     xmlns="http://www.w3.org/2000/svg">
-        //                     <path
-        //                         d="M5 1.12978L6.0211 3.19874L6.13743 3.43446L6.39756 3.47226L8.6808 3.80403L7.02864 5.4145L6.8404 5.59798L6.88484 5.85707L7.27486 8.13108L5.23267 7.05743L5 6.93511L4.76733 7.05743L2.72514 8.13108L3.11516 5.85707L3.1596 5.59798L2.97136 5.4145L1.3192 3.80403L3.60244 3.47226L3.86257 3.43446L3.9789 3.19874L5 1.12978Z"
-        //                         stroke="#B5287C" />
-        //                 </svg>
-        //             </div>
-        //             <div class="region">
-        //                 ${item.data.region || item.data.location_region || ""}
-        //             </div>
-        //             <div class="address">
-        //                 <img src="/assets/location.svg">
-        //                 <span>${
-        //                   item.data.address
-        //                     ? item.data.address
-        //                     : item.data.adress
-        //                     ? item.data.adress[0].text
-        //                     : ""
-        //                 }</span>
-        //             </div>
-        //             <div class="additional-info">
-        //                 ${getCorrectPrice(mainLang, item.data.price)}
-        //             </div>
-        //         </div>
-        //     </div>
-        //   `;
-        //   console.log(getCorrectPrice(mainLang, item.data.price));
-        //   append(row, el);
-        //   result.style.display = "block";
 
-        //   // run function to format rating starts
-        //   ratingStar(document.querySelector(".rating"), item.data.hotel_rating);
-        // });
+        changeHeaderTitle();
+
+        gsap.from(".tab-item", {
+          duration: 0.5,
+          y: 30,
+          opacity: 0,
+          stagger: 0.2,
+          ease: Power1.easOut
+        });
 
         // set current category
         localStorage.setItem("current", type);
@@ -294,32 +208,6 @@ function getCards(type) {
       }
     });
   });
-}
-
-function ratingStar(svg, rating) {
-  const starElements = [...svg.childNodes].filter((el, i) => i % 2 != 0);
-
-  // console.log(starElements);
-
-  starElements.map((star, i) => {
-    // while (i + 1 != rating) {
-    //   console.log(star);
-    //   // star.style.fill = "#B5287C";
-    // }
-    // switch (rating) {
-    //   case rating <= 5 && rating > 4 && i <= 5:
-    //     star.style.fill = "#B5287C";
-    //     break;
-    //   case rating <= 4 && rating > 3 && i <= 4:
-    //     star.style.fill = "#B5287C";
-    //     break;
-    //   case rating <= 3 && rating > 2:
-    //   default:
-    //     break;
-    // }
-  });
-
-  // console.log(stars);
 }
 
 /// trigger tab elements
@@ -343,6 +231,13 @@ document.onreadystatechange = function(e) {
     //dom is ready, window.onload fires later
   }
 };
+
+function changeHeaderTitle() {
+  document.querySelector(".list-title").innerHTML = document.querySelector(
+    ".active"
+  ).innerHTML;
+  return document.querySelector(".list-title").innerHTML;
+}
 
 window.onload = function() {
   this.getCards(current);
