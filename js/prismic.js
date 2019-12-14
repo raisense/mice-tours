@@ -80,8 +80,6 @@ function getSpecificItem(id) {
     const modalInfo = document.querySelector(".modal-body__info");
     const modalConditions = document.querySelector(".conditions-body");
     const hiddenInput = document.querySelector(".tour-name");
-    const loader = `Loading...`;
-    modalBody.innerHTML = loader;
 
     api
       .query(PrismicJS.Predicates.at("document.id", id), lang)
@@ -140,6 +138,7 @@ function getCategoryProjects(category) {
   const projects = PrismicJS.Predicates.at("document.type", category);
   const contentBox = document.getElementById("tab-content-row");
   const othersBtn = createNode("div");
+  othersBtn.className = "others-btn";
 
   prismic.then((api) => {
     if (contentBox.hasChildNodes) {

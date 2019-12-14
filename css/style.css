@@ -526,6 +526,25 @@ footer a:active {
   color: var(--secondary-color);
 }
 
+.others-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.others-btn button {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 24px;
+}
+
+.others-btn button:active {
+  transform: scale(0.9);
+  transition: .2s transform ease-in-out;
+}
+
 .portfolio .tab-item .tab-item-desc {
   font-size: 14px;
   line-height: 17px;
