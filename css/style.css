@@ -586,7 +586,7 @@ footer a:active {
 
 .modal-header {
   background-position: center;
-  background-size: contain;
+  background-size: cover;
 
   color: #fff;
   position: relative;

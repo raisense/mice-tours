@@ -93,35 +93,57 @@ function getSpecificItem(id) {
           data.tour_duration.length > 0 ? data.tour_duration[0].text : "";
         routineText.innerHTML = data.description[0].text;
 
+        console.log(data);
         if (modalInfo.hasChildNodes()) {
           return;
         } else {
           data.info.map((el) => {
+            let paragraphs = createNode("div");
+            let ol = createNode("ol");
+            let ul = createNode("ul");
+
             if (el.type == "paragraph") {
               let p = createNode("p");
               p.innerHTML = el.text;
-              append(modalInfo, p);
+              append(paragraphs, p);
             } else if (el.type == "list-item") {
               let li = createNode("li");
               li.innerHTML = el.text;
-              append(modalInfo, li);
+              append(ul, li);
+            } else if (el.type == "o-list-item") {
+              let li = createNode("li");
+              li.innerHTML = el.text;
+              append(ol, li);
             }
+            append(modalInfo, paragraphs);
+            ul.hasChildNodes ? append(modalInfo, ul) : "";
+            append(modalInfo, ol);
           });
         }
 
         if (modalConditions.hasChildNodes()) {
           return;
         } else {
+          let paragraphs = createNode("div");
+          let ol = createNode("ol");
+          let ul = createNode("ul");
           data.conditions.map((el) => {
             if (el.type == "paragraph") {
               let p = createNode("p");
               p.innerHTML = el.text;
-              append(modalConditions, p);
+              append(paragraphs, p);
             } else if (el.type == "list-item") {
               let li = createNode("li");
               li.innerHTML = el.text;
-              append(modalConditions, li);
+              append(ul, li);
+            } else if (el.type == "o-list-item") {
+              let li = createNode("li");
+              li.innerHTML = el.text;
+              append(ol, li);
             }
+            append(modalConditions, paragraphs);
+            append(modalConditions, ul);
+            append(modalConditions, ol);
           });
         }
 
