@@ -10,18 +10,20 @@ prismic.then((api) => {
   const lang = {
     lang: mainLang == "en" ? "en-gb" : mainLang == "uz" ? "uz-uz" : mainLang
   };
+  let slider = document.querySelector(".swiper-container"),
+    sliderWrapper = createNode("div"),
+    btnNext = createNode("div"),
+    btnPrev = createNode("div");
+
   api.query(feedback, lang).then((response) => {
     response.results.map((review) => {
-      let slider = document.querySelector(".swiper-container"),
-        sliderWrapper = createNode("div"),
-        reviewItem = createNode("div"),
-        btnNext = createNode("div"),
-        btnPrev = createNode("div");
-
+      let reviewItem = createNode("div");
       sliderWrapper.className = "swiper-wrapper";
       reviewItem.className = "swiper-slide review-item";
       btnNext.className = "swiper-button-next";
       btnPrev.className = "swiper-button-prev";
+
+      console.log(review);
 
       reviewItem.innerHTML = `
                   <div class="review-desc">
@@ -37,18 +39,16 @@ prismic.then((api) => {
                     </div>
                   </div>   
       `;
-
-      append(slider, sliderWrapper);
       append(sliderWrapper, reviewItem);
+      append(slider, sliderWrapper);
       append(slider, btnNext);
       append(slider, btnPrev);
-
-      const swiper = new Swiper(".swiper-container", {
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev"
-        }
-      });
+    });
+    const swiper = new Swiper(".swiper-container", {
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
+      }
     });
   });
 });
@@ -93,61 +93,21 @@ function getSpecificItem(id) {
           data.tour_duration.length > 0 ? data.tour_duration[0].text : "";
         routineText.innerHTML = data.description[0].text;
 
-        console.log(data);
         if (modalInfo.hasChildNodes()) {
-          return;
+          modalInfo.querySelectorAll("*").forEach((n) => n.remove());
+          renderElements(modalInfo, data.info);
         } else {
-          data.info.map((el) => {
-            let paragraphs = createNode("div");
-            let ol = createNode("ol");
-            let ul = createNode("ul");
-
-            if (el.type == "paragraph") {
-              let p = createNode("p");
-              p.innerHTML = el.text;
-              append(paragraphs, p);
-            } else if (el.type == "list-item") {
-              let li = createNode("li");
-              li.innerHTML = el.text;
-              append(ul, li);
-            } else if (el.type == "o-list-item") {
-              let li = createNode("li");
-              li.innerHTML = el.text;
-              append(ol, li);
-            }
-            append(modalInfo, paragraphs);
-            ul.hasChildNodes ? append(modalInfo, ul) : "";
-            append(modalInfo, ol);
-          });
+          renderElements(modalInfo, data.info);
         }
 
         if (modalConditions.hasChildNodes()) {
-          return;
+          modalConditions.querySelectorAll("*").forEach((n) => n.remove());
+          renderElements(modalConditions, data.conditions);
         } else {
-          let paragraphs = createNode("div");
-          let ol = createNode("ol");
-          let ul = createNode("ul");
-          data.conditions.map((el) => {
-            if (el.type == "paragraph") {
-              let p = createNode("p");
-              p.innerHTML = el.text;
-              append(paragraphs, p);
-            } else if (el.type == "list-item") {
-              let li = createNode("li");
-              li.innerHTML = el.text;
-              append(ul, li);
-            } else if (el.type == "o-list-item") {
-              let li = createNode("li");
-              li.innerHTML = el.text;
-              append(ol, li);
-            }
-            append(modalConditions, paragraphs);
-            append(modalConditions, ul);
-            append(modalConditions, ol);
-          });
+          renderElements(modalConditions, data.conditions);
         }
 
-        modalBody.innerHTML = nodeToString(modalContent);
+        // modalBody.innerHTML = nodeToString(modalContent);
       });
   });
 }
@@ -184,9 +144,9 @@ function getCategoryProjects(category) {
                                 <img src="${project.data.image.url}" alt="" />
                             </div>
                             <div class="tab-item-info">
-                              <div class="tab-item-title">${
+                              <div class="tab-item-title">${trimText(
                                 project.data.name[0].text
-                              }</div>
+                              )}</div>
                               <div class="tab-item-route">${
                                 project.data.description[0].text
                               }</div>

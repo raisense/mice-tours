@@ -62,7 +62,7 @@ function getCards(type) {
                                   ${project.data.region}
                               </div>
                               <div class="address">
-                                  <img src="/assets/location.svg">
+                                  <img src="assets/location.svg">
                                   <span>${project.data.address}</span>
                               </div>
                               <div class="additional-info">
@@ -101,7 +101,7 @@ function getCards(type) {
                                     ${project.data.location_region}
                                 </div>
                                 <div class="address">
-                                    <img src="/assets/location.svg">
+                                    <img src="assets/location.svg">
                                     <span>${project.data.address}</span>
                                 </div>
                                 <div class="additional-info">
@@ -140,7 +140,7 @@ function getCards(type) {
                                       ${project.data.region}
                                   </div>
                                   <div class="address">
-                                      <img src="/assets/location.svg">
+                                      <img src="assets/location.svg">
                                       <span>${project.data.adress[0].text}</span>
                                   </div>   
                                 </div>

@@ -79,8 +79,40 @@ function trimText(txt) {
     return trimmed;
   }
   return txt;
+}
 
-  // return txt.trunc(120, true);
+function renderElements(parent, array) {
+  console.log(parent, array);
+  let ol = createNode("ol");
+  let ul = createNode("ul");
+  array.map((el) => {
+    let paragraphs = createNode("div");
+
+    switch (el.type) {
+      case "paragraph":
+        let p = createNode("p");
+        p.innerHTML = el.text;
+        append(paragraphs, p);
+        break;
+      case "list-item":
+        let ul_li = createNode("li");
+        ul_li.innerHTML = el.text;
+        ul_li.innerHTML.length > 20 ? append(ul, ul_li) : "";
+        break;
+      case "o-list-item":
+        let ol_li = createNode("li");
+        ol_li.innerHTML = el.text;
+        append(ol, ol_li);
+        break;
+
+      default:
+        break;
+    }
+
+    paragraphs.hasChildNodes ? append(parent, paragraphs) : "";
+    ul.hasChildNodes ? append(parent, ul) : "";
+    ol.hasChildNodes ? append(parent, ol) : "";
+  });
 }
 
 function showToast(e) {

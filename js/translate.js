@@ -66,37 +66,37 @@ i18next.init(
           cards: [
             {
               cardTitle: "МИТИНГИ",
-              cardDesc: `<strong> MICE TOURS </strong> has hosted every type of
-                  business meetings and the ease and convenience you will
-                  experience at our venues is unparalleled. Dedicated teams of
-                  professionals in MICE in Uzbekistan combine their efficiency
-                  and administrative expertise with a business’ requirements
-                  making for a very satisfactory and organized meet schedule and
-                  program.`
+              cardDesc: `<strong> MICE TOURS </strong>принимал каждый тип
+                               деловые встречи и легкость и удобство вы будете
+                                Опыт работы на наших площадках не имеет аналогов. Выделенные команды
+                                профессионалы MICE в Узбекистане сочетают свою эффективность
+                                и административная экспертиза с требованиями бизнеса
+                                делая для очень удовлетворительного и организованного графика встреч и
+                                программа.`
             },
             {
               cardTitle: "ИНСЕНТНЫЙ",
-              cardDesc: `<strong> MICE TOURS </strong>’s Incentive Tours Division
-                  offers a wide-ranging choice of corporate incentive packages
-                  for company executives, dealers etc. through meticulously
-                  planned and operated tours and`
+              cardDesc: `Отдел инсентив-туров <strong>MICE TOUR </strong>
+                                предлагает широкий выбор корпоративных пакетов стимулов
+                                для руководителей компаний, дилеров и т. д. тщательно
+                                запланированные и управляемые туры и`
             },
             {
               cardTitle: "КОНФЕРЕНЦИИ",
-              cardDesc: `We at <strong> MICE TOURS </strong> are professionals at
-              organizing MICE in Uzbekistan and are capable of providing
-              businesses with an extensive choice of venues in any part of
-              the globe. You choose the venue and our experts will execute
-              all the logistics to ensure a smooth and unforgettable
-              conference.`
+              cardDesc: `Мы в <strong> MICE TOURS </ strong> являемся профессионалами в
+                            организуют MICE в Узбекистане и способны обеспечить
+                            предприятия с широким выбором мест в любой части
+                            Глобус. Вы выбираете место, и наши специалисты выполнят
+                            вся логистика для обеспечения плавного и незабываемого
+                            конференция.`
             },
             {
               cardTitle: "СОБЫТИЕ",
-              cardDesc: ` Businesses always want their products launched and corporate
-              parties conducted in relaxing settings.
-              <strong> MICE TOURS </strong> can organize such events for a
-              business at locations like mountains, deserts, islands, cruise
-              lounges and even a traditional hotel.`
+              cardDesc: ` Компании всегда хотят, чтобы их продукты были запущены, а корпоративные
+                            вечеринки проводятся в расслабляющей обстановке.
+                            <strong> MICE TOURS </ strong> могут организовать такие мероприятия для
+                            бизнес в таких местах, как горы, пустыни, острова, круиз
+                            комнаты отдыха и даже традиционный отель.`
             }
           ],
           about:
@@ -108,30 +108,31 @@ i18next.init(
             "Рестораны",
             "Транспорт"
           ],
-          showAllButton: "Show all",
-          clientFeedbackTitle: "CLIENT FEEDBACK",
-          clientFeedbackSubtitle: "Words From Our Happy Tourist",
-          address: "Bukhara street 26, Tashkent Asiatour 100123, Uzbekistan",
+          showAllButton: "Показать все",
+          clientFeedbackTitle: "ОБРАТНАЯ СВЯЗЬ КЛИЕНТА",
+          clientFeedbackSubtitle: "Слова от нашего счастливого туриста",
+          address: "Ул. Бухара, 26, Ташкент, Азиатур 100123, Узбекистан",
           footerFormTitle:
-            "Feel free to contact us for help or additional Info",
+            "Не стесняйтесь обращаться к нам за помощью или дополнительной информацией",
           footerFormInputs: [
-            "Full Name",
-            "E-mail",
-            "Subject",
-            "Travel details"
+            "Полное имя",
+            "Эл. почта",
+            "Тема",
+            "Детали путешествия"
           ],
-          formButton: "Send",
+          formButton: "Отправлять",
           footerInfo: ["All Rights Reserved", "Developed with love by"],
-          modalItems: ["Duration", "Routine"],
-          modalConditionsTitle: "Conditions",
-          modalFormTitle: "For more details, please leave a request",
+          modalItems: ["Продолжительность", "Рутин"],
+          modalConditionsTitle: "Условия",
+          modalFormTitle:
+            "Для более подробной информации, пожалуйста, оставьте заявку",
           modalFormInputs: [
-            "Full Name",
-            "Phone number",
-            "E-mail",
-            "Number of travelers",
-            "Date of travel",
-            "Travel details"
+            "Полное имя",
+            "Номер телефона",
+            "Эл. почта",
+            "Количество путешественников",
+            "Дата путешествия",
+            "Детали путешествия"
           ]
         }
       },
@@ -230,8 +231,6 @@ function updateContent() {
   [...document.querySelectorAll("[data-hero]")].map((el, i) => {
     el.innerHTML = i18next.t(`heroText${i + 1}`);
   });
-
-  // Cards
 
   [...document.querySelectorAll(".card")].map((card, i) => {
     let cardElements = Array.from(card.childNodes),

@@ -205,5 +205,16 @@ input[type="submit"] {
     width: 100%;
     height: 16px;
     display: block;
-    background-color: lightblue;
+    background-color: #eee;
+}
+
+@media screen and (max-width: 768px) {
+    aside ul {
+        padding-left: 0;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    aside ul li {}
 }
