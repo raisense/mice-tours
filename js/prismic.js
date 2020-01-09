@@ -62,7 +62,9 @@ tabElements.map((el, i) => {
       .addClass("active")
       .siblings()
       .removeClass("active");
-    getCategoryProjects(el.dataset.tab);
+    if (el.dataset.tab != "gallery") {
+      getCategoryProjects(el.dataset.tab);
+    }
   });
 });
 
@@ -141,12 +143,14 @@ function getCategoryProjects(category) {
                     
                         <div class="tab-item">
                             <div class="tab-item-img">
-                                <img src="${project.data.image.url}" alt="" />
+                                <img src="${
+                                  project.data.image.url
+                                }" alt="project.data.name[0].text" />
                             </div>
                             <div class="tab-item-info">
-                              <div class="tab-item-title">${trimText(
+                              <div class="tab-item-title" title="${
                                 project.data.name[0].text
-                              )}</div>
+                              }">${trimText(project.data.name[0].text)}</div>
                               <div class="tab-item-route">${
                                 project.data.description[0].text
                               }</div>
@@ -195,13 +199,14 @@ function getCategoryProjects(category) {
             projectItem.innerHTML = `
                       
                           <div class="tab-item">
-                              <div class="tab-item-img">
-                                  <img src="${project.data.image.url}" alt="" />
+                              <div class="tab-item-img"  >
+                                  <img src="${project.data.image.url}" 
+                                  alt="${project.data.name[0].text}" />
                               </div>
                               <div class="tab-item-info">
-                                <div class="tab-item-title">${
+                                <div class="tab-item-title" title="${
                                   project.data.name[0].text
-                                }</div>
+                                }">${project.data.name[0].text}</div>
                                 <div class="rating">
                                 ${getCorrectStars(project.data.hotel_rating)}
                             </div>
@@ -240,14 +245,15 @@ function getCategoryProjects(category) {
                         
                             <div class="tab-item">
                                 <div class="tab-item-img">
-                                    <img src="${
-                                      project.data.image.url
-                                    }" alt="" />
+                                    <img src="${project.data.image.url}" alt="${
+              project.data.name[0].text
+            }" />
                                 </div>
                                 <div class="tab-item-info">
-                                  <div class="tab-item-title">${
-                                    project.data.name[0].text
-                                  }</div>
+                                  <div class="tab-item-title" 
+                                  title="${project.data.name[0].text}">${
+              project.data.name[0].text
+            }</div>
                                   
                               <div class="region">
                                   ${project.data.location_region}
@@ -290,10 +296,10 @@ function getCategoryProjects(category) {
                           
                               <div class="tab-item">
                                   <div class="tab-item-img">
-                                      <img src="${project.data.restaurant_image.url}" alt="" />
+                                      <img src="${project.data.restaurant_image.url}" alt="${project.data.name[0].text}" />
                                   </div>
                                   <div class="tab-item-info">
-                                    <div class="tab-item-title">${project.data.name[0].text}</div>
+                                    <div class="tab-item-title" title="${project.data.name[0].text}">${project.data.name[0].text}</div>
                                     
                                 <div class="region">
                                     ${project.data.region}
@@ -329,12 +335,12 @@ function getCategoryProjects(category) {
                                           project.data.image
                                             ? project.data.image.url
                                             : project.data.transport_image.url
-                                        }" alt="" />
+                                        }" alt="${project.data.name[0].text}" />
                                     </div>
                                     <div class="tab-item-info">
-                                      <div class="tab-item-title">${
+                                      <div class="tab-item-title" title="${
                                         project.data.name[0].text
-                                      }</div>
+                                      }">${project.data.name[0].text}</div>
                                       
                                     <div class="seats">
                                       <img src="assets/person.svg">

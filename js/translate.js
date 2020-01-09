@@ -9,6 +9,7 @@ i18next.init(
           heroText1: "ÖZBEKİSTAN",
           heroText2: "TOPLANTILAR KONFERANS SERGİLERİ",
           heroText3: "ORGANİZATÖR",
+          gallery: "Galeri",
           cards: [
             {
               cardTitle: "TOPLANTILAR",
@@ -30,11 +31,12 @@ i18next.init(
           about:
             "Siz veya kuruluşunuz konferans, seminer, personel teşvik programı mı yoksa bir sergiye mi katılıyorsunuz? Bizimle konuş. MICE TOURS uzmanı bir MICE (Toplantılar, Teşvikler, Konferanslar ve Sergiler) Yönetim Şirketidir ve bu olayları bir noktaya kadar halletmek için tecrübe ve kaynaklarla donanmıştır. Otel rezervasyonlarınızı yapabilir ve verimli bir şekilde araba kiralama konusunda yardımcı olabiliriz. Seyahat şirketimizin kuruluşlara sunduğu diğer ilginç hizmetler ve iş grupları heyecan verici MICE TOURS.",
           tabNavigation: [
-            "Turlar",
+            "Portföy",
             "Oteller",
             "Konferans Salonları",
             "Restoranlar",
-            "Taşıma"
+            "Taşıma",
+            "Galeri"
           ],
           showAllButton: "Show all",
           clientFeedbackTitle: "<strong> İSTEMCİ </strong> GERİ BİLDİRİM",
@@ -63,6 +65,7 @@ i18next.init(
           heroText1: "ОРГАНИЗАТОР",
           heroText2: "ВСТРЕЧИ СТИМУЛИРУЮЩИЕ КОНФЕРЕНЦИОННЫЕ ВЫСТАВКИ",
           heroText3: "УЗБЕКИСТАНА",
+          gallery: "Галлерея",
           cards: [
             {
               cardTitle: "МИТИНГИ",
@@ -102,11 +105,12 @@ i18next.init(
           about:
             "Планируете ли вы или ваша организация конференцию, семинар, программу мотивации персонала или участвуете в выставке? Поговори с нами. MICE TOURS - это специализированная управляющая компания MICE (Встречи, Стимулы, Конференции и Выставки), обладающая опытом и ресурсами для управления этими событиями. Мы поможем вам забронировать отель и поможем вам с арендой автомобиля. Другие интересные услуги, которые наша туристическая компания может предложить организациям и бизнес-группам, - это захватывающие MICE TOURS.",
           tabNavigation: [
-            "Туры",
+            "Портфолио",
             "Oтели",
             "Конференционный залы",
             "Рестораны",
-            "Транспорт"
+            "Транспорт",
+            "Галлерея"
           ],
           showAllButton: "Показать все",
           clientFeedbackTitle: "ОБРАТНАЯ СВЯЗЬ КЛИЕНТА",
@@ -141,6 +145,7 @@ i18next.init(
           heroText1: "Uzbekistan",
           heroText2: "Meetings Incentives Conferencing Exhibitions",
           heroText3: "Organizer",
+          gallery: "gallery",
           cards: [
             {
               cardTitle: "MEETINGS",
@@ -180,11 +185,12 @@ i18next.init(
           about:
             "Are you or your organization planning a conference, seminar, staff incentive program or participating in an exhibition? Talk to us. MICE TOURS is a specialist MICE (Meetings, Incentives, Conferences and Exhibitions) Management Company armed with the experience and resources to handle these events to a dot. We can get your hotel bookings done and assist you with car rentals efficiently. Other interesting services our travel company has to offer organizations and business groups are exciting MICE TOURS.",
           tabNavigation: [
-            "Tours",
+            "Portfolio",
             "Hotels",
             "Conference Halls",
             "Restaurants",
-            "Transport"
+            "Transport",
+            "Gallery"
           ],
           showAllButton: "Show all",
           clientFeedbackTitle: "CLIENT FEEDBACK",
@@ -216,10 +222,18 @@ i18next.init(
     }
   },
   function(err, t) {
-    if (window.location.pathname != "/list.html") {
-      updateContent();
-    } else {
-      updateContentForList();
+    switch (window.location.pathname) {
+      case "/list.html":
+        updateContentForList();
+        break;
+      case "/index.html":
+        updateContent();
+        break;
+      case "/gallery.html":
+        updateGallery();
+      default:
+        "";
+        break;
     }
   }
 );
@@ -252,7 +266,13 @@ function updateContent() {
   // tab-items
 
   [...document.querySelectorAll("[data-tab]")].map((tab, i) => {
-    tab.innerHTML = i18next.t("tabNavigation", { returnObjects: true })[i];
+    if (tab.dataset.tab != "gallery") {
+      tab.innerHTML = i18next.t("tabNavigation", { returnObjects: true })[i];
+    } else {
+      tab.querySelector("a").innerHTML = i18next.t("tabNavigation", {
+        returnObjects: true
+      })[i];
+    }
   });
 
   // feedback
@@ -349,6 +369,10 @@ function updateContentForList() {
   changeLanguageBtn(mainLang);
 }
 
+function updateGallery() {
+  changeLanguageBtn(mainLang);
+}
+
 // Additional functions
 
 function changeLng(lng) {
@@ -378,6 +402,8 @@ function changeLanguageBtn(lng) {
   let mainBtn = document.getElementById("main-lang"),
     secondBtn = document.getElementById("second-lang"),
     thirdBtn = document.getElementById("third-lang");
+
+  console.log(mainBtn);
 
   switch (lng) {
     case "en":

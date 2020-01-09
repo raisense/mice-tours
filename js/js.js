@@ -1,4 +1,6 @@
-let tl = new TimelineLite({ paused: true });
+let tl = new TimelineLite({
+  paused: true
+});
 
 tl.fromTo(
   "header",
@@ -70,8 +72,13 @@ tl.fromTo(
     {
       scale: 1,
       opacity: 1,
-      rotate: 360
+      rotate: 360,
+      onComplete: () => {
+        document.body.style = "overflow-y: scroll";
+        console.log("hi");
+      }
     },
+
     "-=1.5"
   )
   .fromTo(

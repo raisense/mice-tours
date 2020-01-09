@@ -448,6 +448,23 @@ footer a:active {
   line-height: 17px;
 }
 
+.portfolio .tab-nav ul a {
+  color: #A5ABBC;
+  padding: 12px 8px;
+  text-align: center;
+  font-size: 16px;
+  margin: 0 12px;
+  line-height: 17px;
+}
+
+.portfolio .tab-nav ul a:hover {
+  text-decoration: none;
+  cursor: pointer;
+  color: #2534b6;
+}
+
+
+
 .portfolio .tab-nav ul li:not(:last-child) {
   /* margin-bottom: 12px; */
 }

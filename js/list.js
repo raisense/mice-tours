@@ -14,7 +14,7 @@ function getCards(type) {
 
   let result = document.querySelector(".sort-result");
   // this is where prismic query actually done
-  console.log(type);
+
   prismic.then((api) => {
     api.query(contentType, lang).then((response) => {
       // get cards list container so that's later we can push all elements inside this element
@@ -40,7 +40,6 @@ function getCards(type) {
           case "hotel":
             response.results.map((project) => {
               const projectItem = createNode("div");
-              console.log(project);
 
               projectItem.innerHTML = `
                         
@@ -83,7 +82,6 @@ function getCards(type) {
           case "conference_hall":
             response.results.map((project) => {
               const projectItem = createNode("div");
-              console.log(project);
 
               projectItem.innerHTML = `
                               <div class="tab-item">
@@ -125,7 +123,6 @@ function getCards(type) {
           case "restaurant":
             response.results.map((project) => {
               const projectItem = createNode("div");
-              console.log(project);
 
               projectItem.innerHTML = `
                             
@@ -153,7 +150,6 @@ function getCards(type) {
           case "transpo":
             response.results.map((project) => {
               const projectItem = createNode("div");
-              console.log(project);
 
               projectItem.innerHTML = `
                               
@@ -220,7 +216,9 @@ tabElements.map((el, i) => {
       .addClass("active")
       .siblings()
       .removeClass("active");
-    getCards(el.dataset.tab);
+    if (!el.dataset.tab == "gallery") {
+      getCards(el.dataset.tab);
+    }
   });
 });
 
