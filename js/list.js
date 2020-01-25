@@ -216,6 +216,8 @@ tabElements.map((el, i) => {
       .addClass("active")
       .siblings()
       .removeClass("active");
+    console.log("hey");
+    getCards(el.dataset.tab);
     if (!el.dataset.tab == "gallery") {
       getCards(el.dataset.tab);
     }

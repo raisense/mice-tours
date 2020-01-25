@@ -86,7 +86,7 @@ i18next.init(
             },
             {
               cardTitle: "КОНФЕРЕНЦИИ",
-              cardDesc: `Мы в <strong> MICE TOURS </ strong> являемся профессионалами в
+              cardDesc: `Мы в <strong> MICE TOURS </strong> являемся профессионалами в
                             организуют MICE в Узбекистане и способны обеспечить
                             предприятия с широким выбором мест в любой части
                             Глобус. Вы выбираете место, и наши специалисты выполнят
@@ -97,7 +97,7 @@ i18next.init(
               cardTitle: "СОБЫТИЕ",
               cardDesc: ` Компании всегда хотят, чтобы их продукты были запущены, а корпоративные
                             вечеринки проводятся в расслабляющей обстановке.
-                            <strong> MICE TOURS </ strong> могут организовать такие мероприятия для
+                            <strong> MICE TOURS </strong> могут организовать такие мероприятия для
                             бизнес в таких местах, как горы, пустыни, острова, круиз
                             комнаты отдыха и даже традиционный отель.`
             }
@@ -232,7 +232,7 @@ i18next.init(
       case "/gallery.html":
         updateGallery();
       default:
-        "";
+        updateContent();
         break;
     }
   }
@@ -366,6 +366,7 @@ function updateContentForList() {
     .querySelector('[type="submit"]')
     .setAttribute("value", i18next.t("formButton"));
 
+  console.log(mainLang);
   changeLanguageBtn(mainLang);
 }
 
